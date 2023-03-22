@@ -1,5 +1,5 @@
 FROM node:16
-WORKDIR /
+WORKDIR /frontend
 COPY ./frontend/package.json ./frontend/package.json
 COPY ./frontend/public ./frontend/public
 COPY ./frontend/src ./frontend/src

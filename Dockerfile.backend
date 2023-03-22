@@ -1,5 +1,5 @@
 FROM node:16
-WORKDIR /
+WORKDIR /backend
 COPY ./backend/package.json ./backend/package.json
 COPY ./backend/app.js ./backend/app.js
 COPY ./backend/data ./backend/data
