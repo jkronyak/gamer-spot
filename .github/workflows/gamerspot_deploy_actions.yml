@@ -43,8 +43,8 @@ jobs:
         with: 
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: gamer-spot-application
-          environment_name: GamerSpot-env
+          application_name: Gamer Spot
+          environment_name: Gamerspot-env
           version_label: "gamer-spot-application-${{ steps.format-time.outputs.replaced }}"
           region: us-east-2
           deployment_package: deploy.zip
