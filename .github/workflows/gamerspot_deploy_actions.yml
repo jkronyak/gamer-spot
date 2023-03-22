@@ -10,22 +10,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout source code
-      uses: actions/checkout@v2
-    
-    - name: Build Docker Image
-      uses: docker-compose up -d --build
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
 
-    - name: Generate deployment package
-      run: zip -r deploy.zip *
+      - name: Docker Compose 
+        uses: isbang/compose-action@v1.4.1
+          
+      - name: Generate deployment package
+        run: zip -r deploy.zip *
 
-    - name: Deploy to Elastic Beanstalk
-      uses: einaregilsson/beanstalk-deploy@v14
-      with: 
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: gamer-spot-application
-        environment_name: GamerSpot-env
-        region: us-east-2
-        deployment_package: deploy.zip
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v14
+        with: 
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: gamer-spot-application
+          environment_name: GamerSpot-env
+          region: us-east-2
+          deployment_package: deploy.zip
