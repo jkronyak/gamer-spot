@@ -20,9 +20,21 @@ jobs:
       - name: Docker Compose 
         uses: isbang/compose-action@v1.4.1
         
+      -
+        name: Get timestamp
+        uses: gerred/actions/current-time@master
+        id: current-time
 
+      - name: Run string replace
+        uses: frabert/replace-string-action@master
+        id: format-time
+        with:
+          pattern: '[:\.]+'
+          string: "${{ steps.current-time.outputs.time }}"
+          replace-with: '-'
+          flags: 'g'
      
-          
+        
       - name: Generate deployment package
         run: zip -r deploy.zip *
 
@@ -33,5 +45,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: gamer-spot-application
           environment_name: GamerSpot-env
+          version_label: "gamer-spot-application-${{ steps.format-time.outputs.replaced }}"
           region: us-east-2
           deployment_package: deploy.zip
