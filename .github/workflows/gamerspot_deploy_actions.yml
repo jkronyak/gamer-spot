@@ -14,8 +14,14 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
 
+      - run: docker build . -f Dockerfile.backend -t gamerspot-be:1
+      - run: docker build . -f Dockerfile.frontend -t gamerspot-fe:1
+
       - name: Docker Compose 
         uses: isbang/compose-action@v1.4.1
+        
+
+     
           
       - name: Generate deployment package
         run: zip -r deploy.zip *
