@@ -1,0 +1,8 @@
+FROM node:16
+WORKDIR /
+COPY ./frontend/package.json ./frontend/package.json
+COPY ./frontend/public ./frontend/public
+COPY ./frontend/src ./frontend/src
+RUN npm install
+EXPOSE 3000
+CMD ["npm", "start"]

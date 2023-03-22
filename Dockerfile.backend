@@ -1,0 +1,10 @@
+FROM node:16
+WORKDIR /
+COPY ./backend/package.json ./backend/package.json
+COPY ./backend/app.js ./backend/app.js
+COPY ./backend/data ./backend/data
+COPY ./backend/routes ./backend/routes
+COPY ./backend/utils ./backend/utils
+RUN npm install
+EXPOSE 4000 
+CMD ["npm", "start"]

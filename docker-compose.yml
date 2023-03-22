@@ -2,14 +2,14 @@ services:
   
   gamerspotbackend:
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile.backend
     ports:
       - "4000:4000"
 
   gamerspotfrontend:
     build:
-      context: ./frontend
+      context: .
       dockerfile: Dockerfile.frontend
     ports:
       - "3000:3000"
