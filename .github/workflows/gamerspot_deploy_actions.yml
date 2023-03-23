@@ -40,7 +40,7 @@ jobs:
           replace-with: '-'
           flags: 'g'
      
-        
+      - run: ls
       - name: Generate deployment package
         run: zip -r deploy.zip *
 
