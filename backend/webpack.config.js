@@ -14,8 +14,8 @@ const ENVIRONMENT_VARIABLES = {
     'process.env.MONGO_URL': JSON.stringify(process.env.MONGO_URL),
 }
 
-export default { 
-    entry: './app.js',
+export default {
+    entry: path.resolve(__dirname, 'app.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'backend.bundle.js'
@@ -23,5 +23,8 @@ export default {
     target: 'node',
     plugins: [ 
         new webpack.DefinePlugin(ENVIRONMENT_VARIABLES)
-    ]
+    ],
+	resolve: {
+		extensions: ['.js', '.jsx', '.json']
+	}
 }

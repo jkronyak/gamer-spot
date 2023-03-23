@@ -14,11 +14,17 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
 
-      - run: docker build . -f ./Dockerfile.backend -t gamerspot-be:1
-      - run: docker build . -f ./Dockerfile.frontend -t gamerspot-fe:1
+      - name: Run Docker build
+        run: docker build -f Dockerfile -t gamer-spot-image .
 
-      - name: Docker Compose 
-        uses: isbang/compose-action@v1.4.1
+      - name: Run Docker container
+        run: docker run -d -p 4000:4000 --name gamer-spot gamer-spot-image
+
+      # - run: docker build . -f ./Dockerfile.backend -t gamerspot-be:1
+      # - run: docker build . -f ./Dockerfile.frontend -t gamerspot-fe:1
+
+      # - name: Docker Compose 
+        # uses: isbang/compose-action@v1.4.1
         
       -
         name: Get timestamp

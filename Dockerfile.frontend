@@ -1,8 +1,12 @@
-FROM node:16
+FROM node:16 as frontend-build
 WORKDIR /frontend
 COPY /frontend/package.json /frontend/package.json
 COPY /frontend/public /frontend/public
 COPY /frontend/src /frontend/src
-RUN npm install
+RUN npm install && npm run build
 EXPOSE 3000
-CMD ["npm", "start"]
+
+FROM node:16
+WORKDIR /root/
+COPY --from=frontend-build /frontend/build ./frontend/build
+# CMD ["npm", "start"]
