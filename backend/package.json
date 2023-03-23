@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +17,9 @@
     "mongodb": "^5.1.0",
     "nodemon": "^2.0.21",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1"
   }
 }
