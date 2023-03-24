@@ -69,7 +69,7 @@ jobs:
           context: . 
           file: Dockerfile
           push: true
-          tags: gamer-spot-application:latest
+          tags: jkronyak/gamer-spot-application:latest
 
 # .github/workflows/main.yml continued
 
