@@ -56,6 +56,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: gamer-spot-application
           environment_name: gamer-spot-env
-          version_label: "docker-app-${{ steps.format-time.outputs.replaced }}"
+          version_label: "gamer-spot-application-${{ steps.format-time.outputs.replaced }}"
           region: us-east-1
           deployment_package: deploy.zip
