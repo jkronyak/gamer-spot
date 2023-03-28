@@ -1,9 +1,5 @@
 {
     "AWSEBDockerrunVersion": "1",
-	"Authentication": {
-		"bucket": "elasticbeanstalk-us-east-1-242122048939",
-		"key": "dockercfg"
-	},
     "Image": {
         "Name": "jkronyak/gamer-spot-application:latest",
         "Update": "true"
