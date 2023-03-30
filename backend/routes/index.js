@@ -1,7 +1,7 @@
 import reviewRoutes from './reviews.js';
 
 const constructorMethod = (app) => { 
-	app.use("/api", (req, res, next) => { 
+	app.use("/api", (req, res) => { 
 		res.json("Hello World!"); 
 	}); 
 
