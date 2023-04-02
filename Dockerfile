@@ -9,8 +9,6 @@ FROM node:16 as frontend-build
 WORKDIR /usr/src
 COPY frontend/ ./frontend/
 RUN cd frontend && npm install && npm run build
-EXPOSE 3000
-
 
 FROM node:16
 WORKDIR /root/
