@@ -13,6 +13,8 @@ if(process.env.ENVIRONMENT !== 'production') {
 	dotenv.config();
 }
 
+console.log(process.env);
+
 const port = process.env.PORT || 4000;
 
 configRoutes(app);
