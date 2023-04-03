@@ -1,0 +1,1 @@
+export const IGDB_BASE_URL = 'https://api.igdb.com/v4';

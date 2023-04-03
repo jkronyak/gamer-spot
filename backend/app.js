@@ -12,7 +12,6 @@ import configRoutes from './routes/index.js';
 if(process.env.ENVIRONMENT !== 'production') { 
 	dotenv.config();
 }
-console.log(path.join(__dirname, '../../../root/frontend/build/index.html'));
 
 const port = process.env.PORT || 4000;
 
@@ -31,14 +30,14 @@ const generateTwitchToken = async () => {
 	try {
 		const response = await axios.post(url);
 		const { access_token } = response.data;
-		process.env.TWITCH_AUTH_TOKEN = token;
+		process.env.TWITCH_AUTH_TOKEN = access_token;
 	} catch (error) {
 		console.log(error);
 	}
 }
 
-
-
 app.listen(port, () => { 
 	console.log(`Server running on http://localhost:${port}/`)
 });
+
+generateTwitchToken();
