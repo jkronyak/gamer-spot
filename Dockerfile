@@ -1,5 +1,6 @@
 FROM node:16 as backend-build
 WORKDIR /usr/src
+COPY .env ./.env
 COPY backend/ ./backend/
 RUN cd backend && npm install && npm run build
 RUN ls
