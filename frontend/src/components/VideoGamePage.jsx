@@ -10,7 +10,7 @@ const VideoGamePage = () => {
 
     useEffect(() => { 
         const fetchData = async () => { 
-            const { data } = await axios.get(`http://localhost:4000/api/games/${id}`);
+            const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/games/${id}`);
             setGameData(data);
         }
         fetchData();
