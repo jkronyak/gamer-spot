@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IGDB_BASE_URL } from '../utils/constants.js';
+import { IGDB_BASE_URL, NOT_FOUND_IMG_URL } from '../utils/constants.js';
 
 const fieldsString = "fields name,summary,url,category,genres.name,screenshots.url,similar_games.name,release_dates.date,cover.url";
 
@@ -22,18 +22,19 @@ const categoryEnum = {
 }
 
 const formatGame = (gameData) => {
-	const formattedGame = { 
-		name: gameData.name ? gameData.name : 'No name',
-		summary: gameData.summary ? gameData.summary : 'No summary',
-		url: gameData.url ? gameData.url : 'No url',
-		category: gameData.category ? categoryEnum[gameData.category] : 'No category',
+
+	const formattedGame = {
+		id: gameData.id ? gameData.id : 'No id listed',
+		name: gameData.name ? gameData.name : 'No name listed',
+		summary: gameData.summary ? gameData.summary : 'No summary listed',
+		url: gameData.url ? gameData.url : 'No url listed',
+		category: gameData.category ? categoryEnum[gameData.category] : 'No category listed',
 		genres: gameData.genres ? gameData.genres.map((genre) => genre.name) : [],
 		screenshots: gameData.screenshots ? gameData.screenshots.map((screenshot) => screenshot.url.replace('t_thumb', 't_screenshot_med')) : [],
 		similar_games: gameData.similar_games ? gameData.similar_games : [],
-		release_dates: gameData.release_dates ? gameData.release_dates.map((release_date) => release_date.date) : [],
-		cover: gameData.cover ? { id: gameData.cover.id, url: gameData.cover.url.replace('t_thumb', 't_720p')} : 'No cover'
-	}	
-
+		release_date: gameData.release_dates ? new Date( (((gameData.release_dates.sort((a, b) => a.date - b.date))[0].date) * 1000) + 86400000).toDateString(): 'No release date listed',
+		coverUrl: gameData.cover ? gameData.cover.url.replace('t_thumb', 't_720p') : NOT_FOUND_IMG_URL
+	}
 	return formattedGame;
 }
 
