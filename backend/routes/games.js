@@ -13,4 +13,11 @@ router.get('/search', async (req, res) => {
 	return res.json(data);
 });
 
+router.get('/:id', async (req, res) => { 
+	const id = req.params.id;
+	const data = await gameData.getGameById(id);
+	return res.json(data);
+});
+
+
 export default router;

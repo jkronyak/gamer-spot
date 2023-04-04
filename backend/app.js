@@ -1,5 +1,6 @@
 import express from 'express';
 import axios from 'axios';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -7,13 +8,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use(cors());
 import configRoutes from './routes/index.js';
 
 if(process.env.ENVIRONMENT !== 'production') { 
 	dotenv.config();
 }
-
-console.log(process.env);
 
 const port = process.env.PORT || 4000;
 
