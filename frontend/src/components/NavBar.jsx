@@ -52,6 +52,16 @@ function Navbar() {
                 }}>
                 Video Games
               </NavLink>
+              <NavLink
+                to='/search'
+                style={({ isActive }) => {
+                  return {
+                    textDecoration: 'none',
+                    color: isActive ? 'green' : 'white',
+                  };
+                }}>
+                Search Games
+              </NavLink>
             </Stack>
           </Stack>
         </Toolbar>
