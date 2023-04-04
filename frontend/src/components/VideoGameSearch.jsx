@@ -8,7 +8,7 @@ const VideoGameSearch = () => {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        const { data } = await axios.get(`http://localhost:4000/api/games/search?searchTerm=?${searchTerm}`);
+        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/games/search?searchTerm=?${searchTerm}`);
         setFoundGames(data);
     }
     const handleInputChange = async (e) => {
