@@ -7,7 +7,6 @@ import webpack from 'webpack';
 import dotenv from 'dotenv';
 dotenv.config();
 
-console.log("environment: ", process.env.ENVIRONMENT)
 const ENVIRONMENT_VARIABLES = {
     'process.env.ENVIRONMENT': JSON.stringify(process.env.ENVIRONMENT),
     'process.env.PORT': JSON.stringify(process.env.PORT),
