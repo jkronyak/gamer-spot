@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 
 const VideoGameSearch = () => {
   const [foundGames, setFoundGames] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
-
-  console.log(cookies.get('token'));
   
   const handleSearch = async (e) => {
     e.preventDefault();

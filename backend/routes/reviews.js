@@ -17,9 +17,10 @@ const authMiddleware = async (req, res, next) => {
 	}	
 };
 
-router.post('/', authMiddleware, async (req, res) => {
-	try { 
-		const { gameId, userId, username, reviewTitle, reviewBody, rating } = req.body;
+router.post('/:gid', authMiddleware, async (req, res) => {
+	try {
+		const gameId = req.params.gid;
+		const { userId, username, reviewTitle, reviewBody, rating } = req.body;
 		const review = await reviewData.createReview(gameId, userId, username, reviewTitle, reviewBody, rating);
 		return res.json(review);
 	} catch (e) {
