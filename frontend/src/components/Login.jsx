@@ -22,6 +22,8 @@ const Login = () => {
 			password: passwordInput
 		});
 		cookies.set('token', response.data.token, { path: '/' });
+		cookies.set('username', response.data.username, { path: '/' });
+		cookies.set('userId', response.data._id, { path: '/' });
 		window.location.href='/search';
 
 	};
