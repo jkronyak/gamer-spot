@@ -98,7 +98,7 @@ function Navbar() {
                 </>
               ) : (
                 <NavLink
-                  to="/login"
+                  to="/logout"
                   style={({ isActive }) => {
                     return {
                       textDecoration: "none",
