@@ -1,5 +1,5 @@
 import { users } from "../config/mongoCollections.js";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 const saltRounds = 12;
 
 async function createUser(username, password) { 
