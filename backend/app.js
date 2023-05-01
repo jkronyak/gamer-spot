@@ -17,6 +17,14 @@ if(process.env.ENVIRONMENT !== 'production') {
 
 const port = process.env.PORT || 4000;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(async (req, res, next) => { 
+	console.log(`[${req.method}] ${req.originalUrl}`);
+	next();
+})
+
 configRoutes(app);
 
 app.use(express.static(path.join(__dirname, '../../../root/frontend/build')));
