@@ -1,6 +1,7 @@
 import { users } from "../config/mongoCollections.js";
 import bcrypt from 'bcryptjs';
 const saltRounds = 12;
+import { ObjectId } from 'mongodb';
 
 async function createUser(username, password) { 
 	const userCollection = await users();
@@ -18,8 +19,16 @@ async function checkUser(username, password) {
 	const userCollection = await users();
 	const foundUser = await userCollection.findOne({ username: username });
 	if(foundUser === null || !bcrypt.compare(password, foundUser.password)) throw `Error: Either the username or password is incorrect!`;
+	
+	return { _id: foundUser._id.toString(), username: foundUser.username };
+}
+
+async function getUserById(uid) { 
+	const userCollection = await users();
+	const foundUser = await userCollection.findOne({ _id: new ObjectId(uid) });
+	if(foundUser === null) throw `Error: User with id ${uid} not found!`;
 
 	return { _id: foundUser._id.toString(), username: foundUser.username };
 }
 
-export { createUser, checkUser };
+export { createUser, checkUser, getUserById };
