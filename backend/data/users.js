@@ -1,16 +1,25 @@
-
 import { users } from "../config/mongoCollections.js";
+import bcrypt from 'bcrypt';
+const saltRounds = 12;
 
-async function createUser() { 
-	const usersCollection = await users();
+async function createUser(username, password) { 
+	const userCollection = await users();
+	const foundUser = await userCollection.findOne({ username: username });
+	if (foundUser !== null) throw `Error: User with username ${username} already exists!`;
 
-	const userToAdd = {
-		'username': 'testUser',
-		'password': 'testPassword'
-	}
-
-	const newUser = await usersCollection.insertOne(userToAdd);
-	return newUser;
+	const hashedPassword = await bcrypt.hash(password, saltRounds);
+	const insertInfo = await userCollection.insertOne({ username: username, password: hashedPassword });
+	if(!insertInfo.acknowledged || !insertInfo.insertedId) throw 'Error: Could not create user!';
+	console.log(insertInfo);
+	return { _id: insertInfo.insertedId.toString(), username: username };
 }
 
-export { createUser };
+async function checkUser(username, password) { 
+	const userCollection = await users();
+	const foundUser = await userCollection.findOne({ username: username });
+	if(foundUser === null || !bcrypt.compare(password, foundUser.password)) throw `Error: Either the username or password is incorrect!`;
+
+	return { _id: foundUser._id.toString(), username: foundUser.username };
+}
+
+export { createUser, checkUser };

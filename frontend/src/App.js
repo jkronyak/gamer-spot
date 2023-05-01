@@ -6,6 +6,8 @@ import NavBar from './components/NavBar';
 import VideoGames from './components/VideoGames';
 import VideoGamePage from './components/VideoGamePage';
 import VideoGameSearch from './components/VideoGameSearch';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path='/games' element={<VideoGames />} />
           <Route path='/search' element={<VideoGameSearch />} />
           <Route path='/games/:id' element={<VideoGamePage />} />
+		  <Route path='/login' element={<Login />} />
+		  <Route path='/register' element={<Register />} />
         </Routes>
       </Router>
     </div>
