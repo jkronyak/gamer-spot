@@ -49,3 +49,14 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.game-list {
+	list-style-type: none;
+}
+
+#tool-list { 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
