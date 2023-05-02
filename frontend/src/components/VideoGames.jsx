@@ -19,7 +19,7 @@ export default function VideoGames() {
       <ul>
         {games.map((game) => {
           return (
-            <li key={game.id}>
+            <li key={game.id} className='game-list'>
               <a href={`/games/${game.id}`}>{game.name}</a>
             </li>
           );

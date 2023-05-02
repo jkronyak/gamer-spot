@@ -21,7 +21,6 @@ const Register = () => {
 			username: usernameInput,
 			password: passwordInput
 		});
-		// nav('/login');
 		window.location.href = '/login';
 	};
 

@@ -18,7 +18,6 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/about' element={<div>About</div>} />
           <Route path='/games' element={<VideoGames />} />
           <Route path='/search' element={<VideoGameSearch />} />
           <Route path='/games/:id' element={<VideoGamePage />} />

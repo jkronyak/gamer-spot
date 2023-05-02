@@ -5,10 +5,19 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 function Navbar() {
+  
+	const navStyle = (isActive) => {
+		return {
+			textDecoration: "none",
+			color: isActive ? "red" : "white",
+			fontWeight: "bold",
+		};
+	};
+
   return (
     <AppBar
       sx={{
-        backgroundColor: "darkgrey",
+        backgroundColor: 'rgb(51, 67, 86)',
         backdropFilter: "blur(20px)",
       }}
       position="sticky"
@@ -21,7 +30,8 @@ function Navbar() {
                 mr: 2,
                 color: "white",
                 fontStyle: "italic",
-                fontSize: "22px",
+				fontWeight: "bold",
+                fontSize: "24px",
               }}
             >
               GamerSpot
@@ -29,45 +39,19 @@ function Navbar() {
             <Stack gap={2} direction="row" justifyContent="space-between">
               <NavLink
                 to="/"
-                style={({ isActive }) => {
-                  return {
-                    textDecoration: "none",
-                    color: isActive ? "green" : "white",
-                  };
-                }}
+                style={({ isActive }) => navStyle(isActive)}
               >
                 Home
               </NavLink>
               <NavLink
-                to="/about"
-                style={({ isActive }) => {
-                  return {
-                    textDecoration: "none",
-                    color: isActive ? "green" : "white",
-                  };
-                }}
-              >
-                About
-              </NavLink>
-              <NavLink
                 to="/games"
-                style={({ isActive }) => {
-                  return {
-                    textDecoration: "none",
-                    color: isActive ? "green" : "white",
-                  };
-                }}
+                style={({ isActive }) => navStyle(isActive)}
               >
                 Video Games
               </NavLink>
               <NavLink
                 to="/search"
-                style={({ isActive }) => {
-                  return {
-                    textDecoration: "none",
-                    color: isActive ? "green" : "white",
-                  };
-                }}
+				style={({ isActive }) => navStyle(isActive)}
               >
                 Search Games
               </NavLink>
@@ -75,39 +59,24 @@ function Navbar() {
                 <>
                   <NavLink
                     to="/register"
-                    style={({ isActive }) => {
-                      return {
-                        textDecoration: "none",
-                        color: isActive ? "green" : "white",
-                      };
-                    }}
+					style={({ isActive }) => navStyle(isActive)}
                   >
                     Register
                   </NavLink>
                   <NavLink
                     to="/login"
-                    style={({ isActive }) => {
-                      return {
-                        textDecoration: "none",
-                        color: isActive ? "green" : "white",
-                      };
-                    }}
+					style={({ isActive }) => navStyle(isActive)}
                   >
                     Login
                   </NavLink>
                 </>
               ) : (
                 <NavLink
-                  to="/logout"
-                  style={({ isActive }) => {
-                    return {
-                      textDecoration: "none",
-                      color: isActive ? "green" : "white",
-                    };
-                  }}
+                  to="/login"
+				  style={({ isActive }) => navStyle(isActive)}
                   onClick={() => {
-                    cookies.remove("token");
-                    window.location.href = "/login";
+                    cookies.remove("token", { path: "/" });
+                    window.location.href = window.location.href;
                   }}
                 >
                   Logout
