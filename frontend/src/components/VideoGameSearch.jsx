@@ -26,7 +26,7 @@ const VideoGameSearch = () => {
       </form>
       {foundGames.length === 0 ? <p>Nothing here.</p> : null}
       <div>
-        <ul className='search-list'>
+        <ul className='game-list'>
           {foundGames.map((game) => {
             return (
               <li key={game.id}>
